@@ -28,7 +28,7 @@ curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz
       -o $CSV_DIR/covidbr-weeks.csv
 curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU/export?format=csv&id=13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU&gid=0' \
       -o $CSV_DIR/covidbr-days.csv
-curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU/export?format=csv&id=13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU&gid=0' \
+curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU/export?format=csv&id=13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU&gid=416136897' \
       -o $CSV_DIR/covidbr-maps.csv   
 
 #####################
