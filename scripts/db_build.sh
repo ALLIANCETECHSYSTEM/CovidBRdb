@@ -6,7 +6,7 @@
 
 ############## 
 # Setup your workspace
-#DB_PATH=databases/sqlite/dpc-covid19-ita_db.sqlite3 ### Passed as ENV
+#DB_PATH=databases/sqlite/covid19BRdb.sqlite3 ### Passed as ENV
 
 #################
 # Build the database
@@ -14,29 +14,103 @@
 # First remove the existing database file, if any
 rm -f $DB_PATH
 
-## Create the andamento_nazionale table
-echo "CREATE TABLE covid_br (
-  name TEXT(255),
-  level TEXT(255),
-  city TEXT(255),
-  county TEXT(255),
-  state TEXT(255),
-  country TEXT(255),
-  population REAL,
-  lat REAL,
-  long REAL,
-  url TEXT(255),
-  aggregate TEXT(255),
-  tz TEXT(255),
-  cases REAL,
-  deaths REAL,
-  recovered REAL,
-  active REAL,
-  tested REAL,
-  hospitalized REAL,
-  discharged REAL,
-  growthFactor REAL,
-  date TEXT(255)
+
+## Create the covid_regions table
+echo "CREATE TABLE covid_regions (
+  data DATE, 
+  regiao VARCHAR, 
+  estado VARCHAR,
+  casosNovos INTEGER,
+  casosAcumulados INTEGER,
+  obitosNovos INTEGER,
+  obitosAcumulados INTEGER
+);" | sqlite3 $DB_PATH
+
+## Create the covid_states table
+echo "CREATE TABLE covid_states (
+  date DATE, 
+  state VARCHAR,
+  city VARCHAR,
+  place_type VARCHAR,
+  confirmed INTEGER,
+  deaths INTEGER,
+  is_last VARCHAR,
+  estimated_population_2019 INTEGER,
+  city_ibge_code INTEGER,
+  confirmed_per_100k_inhabitants INTEGER,
+  death_rate FLOAT
+);" | sqlite3 $DB_PATH
+
+## Create the covid_city table
+echo "CREATE TABLE covid_city (
+  date DATE, 
+  state VARCHAR,
+  city VARCHAR,
+  place_type VARCHAR,
+  confirmed INTEGER,
+  deaths INTEGER,
+  is_last VARCHAR,
+  estimated_population_2019 INTEGER,
+  city_ibge_code INTEGER,
+  confirmed_per_100k_inhabitants INTEGER,
+  death_rate FLOAT
+);" | sqlite3 $DB_PATH
+
+## Create the covid_geral table
+echo "CREATE TABLE covid_geral (
+  total_confirmado INTEGER, 
+  created_at DATETIME,
+  updated_at DATETIME,
+  total_obitos INTEGER,
+  dt_atualizacao DATETIME,
+  total_letalidade FLOAT
+);" | sqlite3 $DB_PATH
+
+## Create the covid_acumulado table
+echo "CREATE TABLE covid_acumulado (
+  data DATE, 
+  created_at DATETIME,
+  updated_at DATETIME,
+  qtd_confirmado INTEGER,
+  qtd_obito INTEGER,
+  taxa_letalidade FLOAT
+);" | sqlite3 $DB_PATH
+
+## Create the covid_regions_perc table
+echo "CREATE TABLE covid_regions_perc (
+  regiao VARCHAR,
+  percent FLOAT,
+  qtd INTEGER,
+  created_at DATETIME,
+  updated_at DATETIME  
+);" | sqlite3 $DB_PATH
+
+## Create the covid_weeks table
+echo "CREATE TABLE covid_weeks (
+  semana_epidemiologica VARCHAR,
+  created_at DATETIME,
+  updated_at DATETIME,
+  qtd_confirmado INTEGER,
+  qtd_obito INTEGER  
+);" | sqlite3 $DB_PATH
+
+## Create the covid_days table
+echo "CREATE TABLE covid_days (
+  data DATE, 
+  created_at DATETIME,
+  updated_at DATETIME,
+  qtd_confirmado INTEGER,
+  qtd_obito INTEGER  
+);" | sqlite3 $DB_PATH
+
+## Create the covid_maps table
+echo "CREATE TABLE covid_maps (
+  estado VARCHAR,
+  qtd INTEGER,
+  latitude FLOAT,
+  longitude FLOAT,
+  created_at DATETIME,
+  updated_at DATETIME  
 );" | sqlite3 $DB_PATH
 
 #####################
