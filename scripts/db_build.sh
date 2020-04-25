@@ -9,7 +9,7 @@
 #DB_PATH=databases/sqlite/covid19BRdb.sqlite3 ### Passed as ENV
 
 #################
-# Build the database
+# Build the database Covid_BR
 
 # First remove the existing database file, if any
 rm -f $DB_PATH
