@@ -5,14 +5,14 @@
 # csvkit - sudo pip install csvkit
 
 ############## 
-# Setup your workspace - File Update from CovidBR
+# Setup your workspace
 #DB_PATH=databases/sqlite/covid19BRdb.sqlite3 ### Passed as ENV
 CSV_DIR=/tmp/covid19br
 mkdir -p $CSV_DIR
 
 ################ 
 # Download the files into $CSV_DIR
-curl 'https://raw.githubusercontent.com/ALLIANCETECHSYSTEM/CovidBRdb/master/files/arquivo_geral.csv' \
+curl 'https://raw.githubusercontent.com/praf62/covid_19_brazil/master/Covid_19_BrazilianStates.csv' \
       -o $CSV_DIR/covidbr-regions.csv
 curl 'https://brasil.io/dataset/covid19/caso/?place_type=state&format=csv' \
       -o $CSV_DIR/covidbr-states.csv
@@ -34,8 +34,12 @@ curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz
 #####################
 # Insert the data
 
+sed '1,2d' $CSV_DIR/covidbr-regions.csv | csvsql -H --query 'SELECT strftime("%Y-%m-%d", data), regiao, estado, casosNovos, casosAcumulados, obitosNovos, obitosAcumulados FROM stdin' | sed '1d' >$CSV_DIR/new_covidbr-regions.csv
+
+cat <( head -n 1 $CSV_DIR/covidbr-regions.csv ) $CSV_DIR/new_covidbr-regions.csv >$CSV_DIR/finish_covidbr-regions.csv
+
 ## Insert the andamento_nazionale data
-csvsql $CSV_DIR/covidbr-regions.csv  \
+csvsql $CSV_DIR/finish_covidbr-regions.csv  \
     --db sqlite:///$DB_PATH --insert --no-create \
     --tables covid_regions    
 csvsql $CSV_DIR/covidbr-states.csv  \
