@@ -12,7 +12,7 @@ mkdir -p $CSV_DIR
 
 ################ 
 # Download the files into $CSV_DIR
-curl 'https://raw.githubusercontent.com/praf62/covid_19_brazil/master/Covid_19_BrazilianStates.csv' \
+curl 'https://brasilcontracovid19.com.br/files/covid_br_csv/arquivo_geral.csv' \
       -o $CSV_DIR/covidbr-regions.csv
 curl 'https://brasil.io/dataset/covid19/caso/?place_type=state&format=csv' \
       -o $CSV_DIR/covidbr-states.csv
