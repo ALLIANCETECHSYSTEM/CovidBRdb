@@ -107,8 +107,8 @@ echo "CREATE TABLE covid_days (
 echo "CREATE TABLE covid_maps (
   estado VARCHAR,
   qtd INTEGER,
-  latitude FLOAT,
-  longitude FLOAT,
+  latitude DECIMAL(10,5),
+  longitude DECIMAL(10,5),
   createdAt DATETIME,
   updatedAt DATETIME  
 );" | sqlite3 $DB_PATH
