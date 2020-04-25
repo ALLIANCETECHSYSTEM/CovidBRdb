@@ -63,7 +63,7 @@ echo "CREATE TABLE covid_geral (
   updated_at DATETIME,
   total_obitos INTEGER,
   dt_atualizacao DATETIME,
-  total_letalidade DECIMAL(10,5)
+  total_letalidade FLOAT
 );" | sqlite3 $DB_PATH
 
 ## Create the covid_acumulado table
@@ -73,13 +73,13 @@ echo "CREATE TABLE covid_acumulado (
   updated_at DATETIME,
   qtd_confirmado INTEGER,
   qtd_obito INTEGER,
-  taxa_letalidade DECIMAL(10,5)
+  taxa_letalidade FLOAT
 );" | sqlite3 $DB_PATH
 
 ## Create the covid_regions_perc table
 echo "CREATE TABLE covid_regions_perc (
   regiao VARCHAR,
-  percent DECIMAL(10,5),
+  percent FLOAT,
   qtd INTEGER,
   createdAt DATETIME,
   updatedAt DATETIME  
@@ -107,7 +107,7 @@ echo "CREATE TABLE covid_days (
 echo "CREATE TABLE covid_maps (
   estado VARCHAR,
   qtd INTEGER,
-  latitude DECIMAL(10,5),
+  latitude FLOAT,
   longitude FLOAT,
   createdAt DATETIME,
   updatedAt DATETIME  
