@@ -6,7 +6,7 @@
 
 ############## 
 # Setup your workspace
-#DB_PATH=databases/sqlite/covid19BRdb.sqlite3 ### Passed as ENV
+#DB_PATH=databases/sqlite/dpc-covid19-ita_db.sqlite3 ### Passed as ENV
 
 #################
 # Build the database
@@ -14,46 +14,29 @@
 # First remove the existing database file, if any
 rm -f $DB_PATH
 
-
-## Create the covid_regions table
-echo "CREATE TABLE covid_regions (
-  data DATE, 
-  regiao VARCHAR, 
-  estado VARCHAR,
-  casosNovos INTEGER,
-  casosAcumulados INTEGER,
-  obitosNovos INTEGER,
-  obitosAcumulados INTEGER
-);" | sqlite3 $DB_PATH
-
-## Create the covid_states table
-echo "CREATE TABLE covid_states (
-  date DATE, 
-  state VARCHAR,
-  city VARCHAR,
-  place_type VARCHAR,
-  confirmed INTEGER,
-  deaths INTEGER,
-  is_last VARCHAR,
-  estimated_population_2019 INTEGER,
-  city_ibge_code INTEGER,
-  confirmed_per_100k_inhabitants INTEGER,
-  death_rate FLOAT
-);" | sqlite3 $DB_PATH
-
-## Create the covid_city table
-echo "CREATE TABLE covid_city (
-  date DATE, 
-  state VARCHAR,
-  city VARCHAR,
-  place_type VARCHAR,
-  confirmed INTEGER,
-  deaths INTEGER,
-  is_last VARCHAR,
-  estimated_population_2019 INTEGER,
-  city_ibge_code INTEGER,
-  confirmed_per_100k_inhabitants INTEGER,
-  death_rate FLOAT
+## Create the andamento_nazionale table
+echo "CREATE TABLE covid_br (
+  name TEXT(255),
+  level TEXT(255),
+  city TEXT(255),
+  county TEXT(255),
+  state TEXT(255),
+  country TEXT(255),
+  population REAL,
+  lat REAL,
+  long REAL,
+  url TEXT(255),
+  aggregate TEXT(255),
+  tz TEXT(255),
+  cases REAL,
+  deaths REAL,
+  recovered REAL,
+  active REAL,
+  tested REAL,
+  hospitalized REAL,
+  discharged REAL,
+  growthFactor REAL,
+  date TEXT(255)
 );" | sqlite3 $DB_PATH
 
 #####################

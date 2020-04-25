@@ -6,33 +6,23 @@
 
 ############## 
 # Setup your workspace
-#DB_PATH=databases/sqlite/covid19BRdb.sqlite3 ### Passed as ENV
-CSV_DIR=/tmp/covid19br
+#DB_PATH=databases/sqlite/dpc-covid19-ita_db.sqlite3 ### Passed as ENV
+CSV_DIR=/tmp/dpccovid19itacsvs
 mkdir -p $CSV_DIR
 
 ################ 
 # Download the files into $CSV_DIR
-curl https://raw.githubusercontent.com/praf62/covid_19_brazil/master/Covid_19_BrazilianStates.csv \
-      -o $CSV_DIR/covidbr-regions.csv
-curl 'https://brasil.io/dataset/covid19/caso/?place_type=state&format=csv' \
-      -o $CSV_DIR/covidbr-states.csv
-curl 'https://brasil.io/dataset/covid19/caso/?place_type=city&format=csv' \
-      -o $CSV_DIR/covidbr-city.csv      
+curl https://coronadatascraper.com/timeseries.csv \
+      -o $CSV_DIR/dpc-covid19-ita-timeseries.csv
 
 #####################
 # Insert the data
 
 ## Insert the andamento_nazionale data
-csvsql $CSV_DIR/covidbr-regions.csv  \
+csvsql $CSV_DIR/dpc-covid19-ita-timeseries.csv  \
     --db sqlite:///$DB_PATH --insert --no-create \
-    --tables covid_regions    
-csvsql $CSV_DIR/covidbr-states.csv  \
-    --db sqlite:///$DB_PATH --insert --no-create \
-    --tables covid_states
-csvsql $CSV_DIR/covidbr-city.csv  \
-    --db sqlite:///$DB_PATH --insert --no-create \
-    --tables covid_city
-
+    --tables covid_br
+    
 #####################
 # EXIT
 exit 0
