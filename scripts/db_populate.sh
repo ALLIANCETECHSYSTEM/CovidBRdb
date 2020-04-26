@@ -34,12 +34,8 @@ curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz
 #####################
 # Insert the data
 
-sed '1,2d' $CSV_DIR/covidbr-regions.csv | csvsql -H --query 'SELECT strftime("%Y-%m-%d", (`data`)), `regiao`, `estado`, `casosNovos`, `casosAcumulados`, `obitosNovos`, `obitosAcumulados` FROM arquivo_geral' | sed '1d' >$CSV_DIR/new_covidbr-regions.csv
-
-cat <( head -n 1 $CSV_DIR/covidbr-regions.csv ) $CSV_DIR/new_covidbr-regions.csv >$CSV_DIR/finish_covidbr-regions.csv
-
 ## Insert the andamento_nazionale data
-csvsql $CSV_DIR/finish_covidbr-regions.csv  \
+csvsql $CSV_DIR/covidbr-regions.csv  \
     --db sqlite:///$DB_PATH --insert --no-create \
     --tables covid_regions    
 csvsql $CSV_DIR/covidbr-states.csv  \
