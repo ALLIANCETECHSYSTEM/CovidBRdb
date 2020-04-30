@@ -17,13 +17,11 @@ rm -f $DB_PATH
 
 ## Create the covid_regions table
 echo "CREATE TABLE covid_regions (
-  data DATE, 
-  regiao VARCHAR, 
-  estado VARCHAR,
-  casosNovos INTEGER,
-  casosAcumulados INTEGER,
-  obitosNovos INTEGER,
-  obitosAcumulados INTEGER
+  IBGE INTEGER, 
+  UF VARCHAR, 
+  Regiao VARCHAR,
+  Qtd_Mun INTEGER,
+  Sintaxe VARCHAR
 );" | sqlite3 $DB_PATH
 
 ## Create the covid_states table
