@@ -85,7 +85,7 @@ echo "CREATE TABLE covid_regions_perc (
 
 ## Create the covid_weeks table
 echo "CREATE TABLE covid_weeks (
-  Semana_Id VARCHAR,
+  Semana_Id INTEGER,
   Semana_CAcum INTEGER,
   Semana_OAcum INTEGER,
   Semana_CNew INTEGER,
