@@ -85,20 +85,20 @@ echo "CREATE TABLE covid_regions_perc (
 
 ## Create the covid_weeks table
 echo "CREATE TABLE covid_weeks (
-  semana_epidemiologica VARCHAR,
-  created_at DATETIME,
-  updated_at DATETIME,
-  qtd_confirmado INTEGER,
-  qtd_obito INTEGER  
+  Semana_Id VARCHAR,
+  Semana_CAcum INTEGER,
+  Semana_OAcum INTEGER,
+  Semana_CNew INTEGER,
+  Semana_ONew INTEGER  
 );" | sqlite3 $DB_PATH
 
 ## Create the covid_days table
 echo "CREATE TABLE covid_days (
-  data DATE, 
-  created_at DATETIME,
-  updated_at DATETIME,
-  qtd_confirmado INTEGER,
-  qtd_obito INTEGER  
+  Dias_Id VARCHAR,
+  Dias_CAcum INTEGER,
+  Dias_OAcum INTEGER,
+  Dias_CNew INTEGER,
+  Dias_ONew INTEGER   
 );" | sqlite3 $DB_PATH
 
 ## Create the covid_maps table

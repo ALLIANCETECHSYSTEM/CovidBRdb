@@ -24,9 +24,9 @@ curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz
       -o $CSV_DIR/covidbr-acumulado.csv      
 curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU/export?format=csv&id=13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU&gid=139606279' \
       -o $CSV_DIR/covidbr-regions-perc.csv    
-curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU/export?format=csv&id=13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU&gid=910295117' \
+curl 'https://docs.google.com/spreadsheets/d/1O1OT--NOKPfy6l4tR6J5VX3TFg2Ah_RD7S9CsgfbikQ/export?format=csv&id=1O1OT--NOKPfy6l4tR6J5VX3TFg2Ah_RD7S9CsgfbikQ&gid=1287373792' \
       -o $CSV_DIR/covidbr-weeks.csv
-curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU/export?format=csv&id=13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU&gid=0' \
+curl 'https://docs.google.com/spreadsheets/d/1O1OT--NOKPfy6l4tR6J5VX3TFg2Ah_RD7S9CsgfbikQ/export?format=csv&id=1O1OT--NOKPfy6l4tR6J5VX3TFg2Ah_RD7S9CsgfbikQ&gid=685710944' \
       -o $CSV_DIR/covidbr-days.csv
 curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU/export?format=csv&id=13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU&gid=416136897' \
       -o $CSV_DIR/covidbr-maps.csv   
