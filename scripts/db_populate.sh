@@ -12,24 +12,16 @@ mkdir -p $CSV_DIR
 
 ################ 
 # Download the files into $CSV_DIR
-curl 'https://raw.githubusercontent.com/ALLIANCETECHSYSTEM/CovidBRdb/master/files/covid19_region.csv' \
+curl 'http://brasilcontracovid19.com.br/files/covid19_region.csv' \
       -o $CSV_DIR/covidbr-regions.csv
 curl 'https://brasil.io/dataset/covid19/caso/?place_type=state&format=csv' \
       -o $CSV_DIR/covidbr-states.csv
 curl 'https://brasil.io/dataset/covid19/caso/?place_type=city&format=csv' \
-      -o $CSV_DIR/covidbr-city.csv   
-curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU/export?format=csv&id=13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU&gid=325952354' \
-      -o $CSV_DIR/covidbr-geral.csv
-curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU/export?format=csv&id=13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU&gid=1799760599' \
-      -o $CSV_DIR/covidbr-acumulado.csv      
-curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU/export?format=csv&id=13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU&gid=139606279' \
-      -o $CSV_DIR/covidbr-regions-perc.csv    
+      -o $CSV_DIR/covidbr-city.csv  
 curl 'https://docs.google.com/spreadsheets/d/1O1OT--NOKPfy6l4tR6J5VX3TFg2Ah_RD7S9CsgfbikQ/export?format=csv&id=1O1OT--NOKPfy6l4tR6J5VX3TFg2Ah_RD7S9CsgfbikQ&gid=1287373792' \
       -o $CSV_DIR/covidbr-weeks.csv
 curl 'https://docs.google.com/spreadsheets/d/1O1OT--NOKPfy6l4tR6J5VX3TFg2Ah_RD7S9CsgfbikQ/export?format=csv&id=1O1OT--NOKPfy6l4tR6J5VX3TFg2Ah_RD7S9CsgfbikQ&gid=685710944' \
-      -o $CSV_DIR/covidbr-days.csv
-curl 'https://docs.google.com/spreadsheets/d/13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU/export?format=csv&id=13sXwuJ4ifBF7AYlKbVVs5QReYfrDSAFgtz1i0_CSkGU&gid=416136897' \
-      -o $CSV_DIR/covidbr-maps.csv   
+      -o $CSV_DIR/covidbr-days.csv 
 
 #####################
 # Insert the data
@@ -44,24 +36,12 @@ csvsql $CSV_DIR/covidbr-states.csv  \
 csvsql $CSV_DIR/covidbr-city.csv  \
     --db sqlite:///$DB_PATH --insert --no-create \
     --tables covid_city
-csvsql $CSV_DIR/covidbr-geral.csv  \
-    --db sqlite:///$DB_PATH --insert --no-create \
-    --tables covid_geral
-csvsql $CSV_DIR/covidbr-acumulado.csv  \
-    --db sqlite:///$DB_PATH --insert --no-create \
-    --tables covid_acumulado
-csvsql $CSV_DIR/covidbr-regions-perc.csv  \
-    --db sqlite:///$DB_PATH --insert --no-create \
-    --tables covid_regions_perc
 csvsql $CSV_DIR/covidbr-weeks.csv  \
     --db sqlite:///$DB_PATH --insert --no-create \
     --tables covid_weeks
 csvsql $CSV_DIR/covidbr-days.csv  \
     --db sqlite:///$DB_PATH --insert --no-create \
     --tables covid_days
-csvsql $CSV_DIR/covidbr-maps.csv  \
-    --db sqlite:///$DB_PATH --insert --no-create \
-    --tables covid_maps
 
 #####################
 # EXIT

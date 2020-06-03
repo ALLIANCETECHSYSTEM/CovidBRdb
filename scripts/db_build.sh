@@ -54,35 +54,6 @@ echo "CREATE TABLE covid_city (
   death_rate FLOAT
 );" | sqlite3 $DB_PATH
 
-## Create the covid_geral table
-echo "CREATE TABLE covid_geral (
-  total_confirmado INTEGER, 
-  created_at DATETIME,
-  updated_at DATETIME,
-  total_obitos INTEGER,
-  dt_atualizacao DATETIME,
-  total_letalidade FLOAT
-);" | sqlite3 $DB_PATH
-
-## Create the covid_acumulado table
-echo "CREATE TABLE covid_acumulado (
-  data DATE, 
-  created_at DATETIME,
-  updated_at DATETIME,
-  qtd_confirmado INTEGER,
-  qtd_obito INTEGER,
-  taxa_letalidade FLOAT
-);" | sqlite3 $DB_PATH
-
-## Create the covid_regions_perc table
-echo "CREATE TABLE covid_regions_perc (
-  regiao VARCHAR,
-  percent FLOAT,
-  qtd INTEGER,
-  createdAt DATETIME,
-  updatedAt DATETIME  
-);" | sqlite3 $DB_PATH
-
 ## Create the covid_weeks table
 echo "CREATE TABLE covid_weeks (
   Semana_Id INTEGER,
@@ -99,16 +70,6 @@ echo "CREATE TABLE covid_days (
   Dias_OAcum INTEGER,
   Dias_CNew INTEGER,
   Dias_ONew INTEGER   
-);" | sqlite3 $DB_PATH
-
-## Create the covid_maps table
-echo "CREATE TABLE covid_maps (
-  estado VARCHAR,
-  qtd INTEGER,
-  latitude DECIMAL(10,5),
-  longitude DECIMAL(10,5),
-  createdAt DATETIME,
-  updatedAt DATETIME  
 );" | sqlite3 $DB_PATH
 
 #####################
