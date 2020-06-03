@@ -17,11 +17,11 @@ rm -f $DB_PATH
 
 ## Create the covid_regions table
 echo "CREATE TABLE covid_regions (
-  IBGE INTEGER, 
+  IBGE REAL, 
   UF VARCHAR, 
   Regiao VARCHAR,
-  Qtd_Mun INTEGER,
-  Sintaxe VARCHAR
+  Qtd_Mun REAL
+  
 );" | sqlite3 $DB_PATH
 
 #####################
