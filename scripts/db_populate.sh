@@ -6,7 +6,7 @@
 
 ############## 
 # Setup databese file
-#DB_PATH=databases/sqlite/covid19BRdb.sqlite3 ### Passed as ENV
+DB_PATH=databases/sqlite/covid19BRdb.sqlite3 ### Passed as ENV
 CSV_DIR=/tmp/covid19br
 mkdir -p $CSV_DIR
 
