@@ -24,54 +24,6 @@ echo "CREATE TABLE covid_regions (
   Sintaxe VARCHAR
 );" | sqlite3 $DB_PATH
 
-## Create the covid_states table
-echo "CREATE TABLE covid_states (
-  date DATE, 
-  state VARCHAR,
-  city VARCHAR,
-  place_type VARCHAR,
-  confirmed INTEGER,
-  deaths INTEGER,
-  is_last VARCHAR,
-  estimated_population_2019 INTEGER,
-  city_ibge_code INTEGER,
-  confirmed_per_100k_inhabitants INTEGER,
-  death_rate FLOAT
-);" | sqlite3 $DB_PATH
-
-## Create the covid_city table
-echo "CREATE TABLE covid_city (
-  date DATE, 
-  state VARCHAR,
-  city VARCHAR,
-  place_type VARCHAR,
-  confirmed INTEGER,
-  deaths INTEGER,
-  is_last VARCHAR,
-  estimated_population_2019 INTEGER,
-  city_ibge_code INTEGER,
-  confirmed_per_100k_inhabitants INTEGER,
-  death_rate FLOAT
-);" | sqlite3 $DB_PATH
-
-## Create the covid_weeks table
-echo "CREATE TABLE covid_weeks (
-  Semana_Id INTEGER,
-  Semana_CAcum INTEGER,
-  Semana_OAcum INTEGER,
-  Semana_CNew INTEGER,
-  Semana_ONew INTEGER  
-);" | sqlite3 $DB_PATH
-
-## Create the covid_days table
-echo "CREATE TABLE covid_days (
-  Dias_Id VARCHAR,
-  Dias_CAcum INTEGER,
-  Dias_OAcum INTEGER,
-  Dias_CNew INTEGER,
-  Dias_ONew INTEGER   
-);" | sqlite3 $DB_PATH
-
 #####################
 # EXIT
 exit 0
