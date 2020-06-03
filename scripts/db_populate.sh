@@ -12,7 +12,7 @@ mkdir -p $CSV_DIR
 
 ################ 
 # Download the files into $CSV_DIR
-curl 'http://brasilcontracovid19.com.br/files/covid19_region.csv' \
+curl 'https://brasilcontracovid19.com.br/files/covid19_region_2.csv' \
       -o $CSV_DIR/covidbr-regions.csv
 #####################
 # Insert the data
