@@ -32,7 +32,7 @@ jobs:
       
     # Install PIP
     - name: Install pyton pip
-      run: yum install -y python-pip
+      run: sudo apt-get -y python-pip
     - name: update Pyton pip
       run: |
         pip install --upgrade pip
