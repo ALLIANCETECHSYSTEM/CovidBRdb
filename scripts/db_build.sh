@@ -47,6 +47,7 @@ echo "CREATE TABLE covid_city (
   place_type VARCHAR,
   confirmed INTEGER,
   deaths INTEGER,
+  order_for_place INTEGER,
   is_last VARCHAR,
   estimated_population_2019 INTEGER,
   city_ibge_code INTEGER,
