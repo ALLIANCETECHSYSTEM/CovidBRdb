@@ -16,7 +16,7 @@ curl 'http://brasilcontracovid19.com.br/files/covid19_region.csv' \
       -o $CSV_DIR/covidbr-regions.csv
 curl 'https://brasil.io/dataset/covid19/caso/?place_type=state&format=csv' \
       -o $CSV_DIR/covidbr-states.csv
-curl 'https://brasil.io/dataset/covid19/caso/?place_type=city&format=csv' \
+curl 'https://data.brasil.io/dataset/covid19/caso.csv.gz' \
       -o $CSV_DIR/covidbr-city.csv  
 curl 'https://docs.google.com/spreadsheets/d/1O1OT--NOKPfy6l4tR6J5VX3TFg2Ah_RD7S9CsgfbikQ/export?format=csv&id=1O1OT--NOKPfy6l4tR6J5VX3TFg2Ah_RD7S9CsgfbikQ&gid=1287373792' \
       -o $CSV_DIR/covidbr-weeks.csv
