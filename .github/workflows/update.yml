@@ -28,15 +28,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    # Install scripts dependency
-      
-    # Install PIP
-    - name: Install pyton pip
-      run: sudo apt-get python-pip
-    - name: update Pyton pip
-      run: |
-        pip install --upgrade pip
-        
+    # Install scripts dependency        
     - name: Install sqlite
       run: sudo apt-get install sqlite3
     - name: Install csvkit
